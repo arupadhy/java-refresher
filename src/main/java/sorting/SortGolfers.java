@@ -1,9 +1,6 @@
 package sorting;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SortGolfers {
@@ -12,7 +9,8 @@ public class SortGolfers {
             new Golfer("Tiger", "Woods", 70),
             new Golfer("Tom", "Watson", 70),
             new Golfer("Ty", "Webb", 68),
-            new Golfer("Bubba", "Watson", 70)
+            new Golfer("Bubba", "Watson", 70),
+            new Golfer("Rose", "Zhang", 71)
     );
 
     // default sort is by score
@@ -50,11 +48,29 @@ public class SortGolfers {
         });
     }
 
+    // sort old style
+    public void oldSchoolSort() {
+        Collections.sort(golfers); // sorted by score only as per Golfer's implementation
+
+        golfers.forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
         SortGolfers sg = new SortGolfers();
-//        sg.defaultSort();
-//        sg.sortByScoreThenLast();
+
+        System.out.println("-----oldSchoolSort----");
+        sg.oldSchoolSort();
+
+        System.out.println("-----defaultSort----");
+        sg.defaultSort();
+
+        System.out.println("-----sortByScoreThenLast----");
+        sg.sortByScoreThenLast();
+
+        System.out.println("-----sortByScoreThenFirst----");
         sg.sortByScoreThenLastThenFirst();
-//         sg.partitionByScore();
+
+        System.out.println("-----partitionByScore----");
+        sg.partitionByScore();
     }
 }
